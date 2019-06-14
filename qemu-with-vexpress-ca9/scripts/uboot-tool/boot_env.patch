@@ -1,0 +1,27 @@
+--- ../u-boot-2019.04/include/configs/vexpress_common.h.bak	2019-06-14 11:17:30.916084193 +0800
++++ ../u-boot-2019.04/include/configs/vexpress_common.h	2019-06-14 11:28:01.712540102 +0800
+@@ -196,16 +196,14 @@
+ 		CONFIG_PLATFORM_ENV_SETTINGS \
+                 BOOTENV \
+ 		"console=ttyAMA0,38400n8\0" \
+-		"dram=1024M\0" \
+-		"root=/dev/sda1 rw\0" \
+-		"mtd=armflash:1M@0x800000(uboot),7M@0x1000000(kernel)," \
+-			"24M@0x2000000(initrd)\0" \
+-		"flashargs=setenv bootargs root=${root} console=${console} " \
+-			"mem=${dram} mtdparts=${mtd} mmci.fmax=190000 " \
+-			"devtmpfs.mount=0  vmalloc=256M\0" \
+-		"bootflash=run flashargs; " \
+-			"cp ${ramdisk_addr} ${ramdisk_addr_r} ${maxramdisk}; " \
+-			"bootm ${kernel_addr} ${ramdisk_addr_r}\0"
++		"dram=512M\0" \
++		"kernel_addr=0x60008000\0" \
++		"dtb_addr=0x61000000\0" \
++		"root=/dev/mmcblk0 rw rootfstype=ext3\0" \
++		"init=/linuxrc\0" \
++		"kernel_env=setenv bootargs root=${root} init=/linuxrc console=${console}\0" \
++		"bootcmd=run kernel_env;" \
++		"ext4load mmc 0 ${kernel_addr} zImage\;ext4load mmc 0 ${dtb_addr} vexpress-v2p-ca9.dtb\;bootz ${kernel_addr} - ${dtb_addr}\0"
+ 
+ /* FLASH and environment organization */
+ #define PHYS_FLASH_SIZE			0x04000000	/* 64MB */

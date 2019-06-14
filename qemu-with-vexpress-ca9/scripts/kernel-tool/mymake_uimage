@@ -1,0 +1,2 @@
+#!/bin/sh 
+make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm $1 LOADADDR=0x60008000 uImage

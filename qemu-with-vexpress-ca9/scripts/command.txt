@@ -1,0 +1,13 @@
+0x60000000 0x8000
+0x60008000
+0x600100000
+ext4load mmc 0 0x60008000 uImage
+bootm 0x60008000
+
+root=/dev/mmcblk0 rw rootfstype=ext3 init=/linuxrc console=ttyAMA0 115200
+
+setenv bootargs root=/dev/mmcblk0 rw rootfstype=ext3 init=/linuxrc console=ttyAMA0,115200
+
+setenv bootcmd ext4load mmc 0 0x60008000 uImage\;ext4load mmc 0 0x61000000 vexpress-v2p-ca9.dtb\;bootm 0x60008000 - 0x61000000
+
+setenv bootcmd ext4load mmc 0 0x60008000 zImage\;ext4load mmc 0 0x61000000 vexpress-v2p-ca9.dtb\;bootz 0x60008000 - 0x61000000
