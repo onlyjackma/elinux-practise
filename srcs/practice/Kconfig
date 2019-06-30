@@ -1,0 +1,11 @@
+menu "Practice drivers"
+comment " Practice drivers"
+
+config PRACTICE 
+	bool "Practice drivers support"
+
+config PRACTICE_HELLO
+	tristate "Practice Hello kenrl module"
+	depends on PRACTICE
+
+endmenu
