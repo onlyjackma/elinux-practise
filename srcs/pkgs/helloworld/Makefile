@@ -8,8 +8,8 @@ LDFLAGS="$(TARGET_LDFLAGS)" -rpath=$(STAGING_DIR)/usr/lib
 include $(INCLUDE_DIR)/package.mk
 
 define Package/helloworld
-	SECTION:=utils
-	CATEGORY:=Utilities
+	SECTION:=vendor
+	CATEGORY:=VENDOR
 	DEPENDS:=+libubox +libubus +libjson-c
 	TITLE:=Helloworld -- prints a snarky message
 endef

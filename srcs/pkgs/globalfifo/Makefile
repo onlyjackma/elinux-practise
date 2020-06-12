@@ -14,10 +14,10 @@ PKG_RELEASE:=1
 include $(INCLUDE_DIR)/package.mk
 
 define KernelPackage/globalfifo
-  SUBMENU:=practice modules
-  TITLE:=Driver for globalfifo
-  AUTOLOAD:=$(call AutoLoad,80,globalfifo)
-  FILES:=$(PKG_BUILD_DIR)/globalfifo.ko
+  	SUBMENU:=practice modules
+  	TITLE:=Driver for globalfifo
+  	AUTOLOAD:=$(call AutoLoad,80,globalfifo)
+  	FILES:=$(PKG_BUILD_DIR)/globalfifo.ko
 endef
 
 define Build/Compile

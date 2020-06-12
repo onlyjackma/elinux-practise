@@ -8,8 +8,8 @@ LDFLAGS="$(TARGET_LDFLAGS)" -rpath=$(STAGING_DIR)/usr/lib
 include $(INCLUDE_DIR)/package.mk
 
 define Package/practice
-	SECTION:=utils
-	CATEGORY:=Utilities
+	SECTION:=vendor
+	CATEGORY:=VENDOR
 	DEPENDS:=+libaio
 	TITLE:=practice -- practice programs for linux kernel study
 endef
